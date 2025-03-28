@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Liricle Example</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+IS&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/all.css">
+
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/sharp-duotone-thin.css">
+
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/sharp-duotone-solid.css">
+
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/sharp-duotone-regular.css">
+
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/sharp-duotone-light.css">
+
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/sharp-thin.css">
+
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/sharp-solid.css">
+
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/sharp-regular.css">
+
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/sharp-light.css">
+
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/duotone-thin.css">
+
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/duotone-regular.css">
+
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/duotone-light.css">
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: "Playwrite IS", serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    html {
+        font-family: sans-serif;
+        font-size: 16px;
+    }
+
+    body {
+        width: 100vw;
+        height: 100vh;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: rgba(98, 139, 103, 0.25);
+
+        box-shadow: 0 2px 32px 0 rgba(31, 38, 135, 0.37);
+
+        backdrop-filter: blur(5.5px);
+        -webkit-backdrop-filter: blur(5.5px);
+        border-radius: 10px;
+    }
+
+    .cont {
+        box-sizing: border-box;
+        text-align: center;
+        margin: 0 auto;
+        padding: 10px;
+        width: 80%;
+        height: 90%;
+
+    }
+
+    .btm {
+        width: 98dvw;
+        height: 12dvh;
+        padding: 30px;
+        background: rgba(94, 199, 182, 0.35);
+        box-shadow: 6px 12px 35px 2px rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+    }
+
+
+
+
+    /* .dot:nth-child(1) {
+            animation-delay: 0s;
+      }
+
+      .dot:nth-child(2) {
+            animation-delay: 0.2s;
+      }
+
+      .dot:nth-child(3) {
+            animation-delay: 0.4s;
+      }
+
+      .dot:nth-child(4) {
+            animation-delay: 0.6s;
+      }
+
+      .dot:nth-child(5) {
+            animation-delay: 0.8s;
+      }
+
+      .dot:nth-child(6) {
+            animation-delay: 1s;
+      }
+
+      .dot:nth-child(7) {
+            animation-delay: 1.2s;
+      } */
+
+    #thisaudio {
+        width: 100%;
+    }
+
+
+    .lyric-word {
+        padding: 10px;
+        margin: 30px 0;
+        color: black;
+        border-radius: 8px;
+    }
+
+    .sho {
+        animation: shake 1s ease-in-out infinite;
+    }
+@keyframes shake {
+        0% {
+            transform: translateY(0);
+        }
+
+        25% {
+            transform: translateY(-14px);
+            /* Move up */
+        }
+
+        50% {
+            transform: translateY(14px);
+            /* Move down */
+        }
+
+        75% {
+            transform: translateY(-8px);
+            /* Move up */
+        }
+
+        100% {
+            transform: translateY(8px);
+            /* Move down */
+        }
+    }
+
+    .lyric-line {
+        perspective: 100px;
+        margin: 0 auto;
+        width: max-content;
+        box-sizing: border-box;
+        text-align: center;
+        font-size: 10px;
+        padding: 5px;
+        border-radius: 8px;
+        opacity: 1;
+        color: black;
+    }
+</style>
+
+<body>
+    <div class="cont">
+        <div class="lyric-word"></div>
+        <div class="lyric-line">
+            ..................
+        </div>
+    </div>
+    <div class="btm">
+<audio id="thisaudio" controls autoplay>
+            <source src="https://pagalworld.com.mx/wp-content/uploads/2023/02/Until-I-Found-You.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+
+    <script src="
+        https://cdn.jsdelivr.net/npm/liricle
+        "></script>
+</body>
+
+<script>
+
+    const $audio = document.getElementById("thisaudio");
+    const $lyric_word = document.querySelector(".lyric-word");
+    const $lyric_line = document.querySelector(".lyric-line");
+
+    const liricle = new Liricle();
+
+    liricle.on("sync", (line, word) => {
+        if (line.text) {
+            $lyric_line.innerText = line.text;
+
+            gsap.to($lyric_line, {
+                scale: 1.7,
+                rotateX: -25,
+                backgroundColor: "rgba(255, 99, 71, 0.2)",
+                duration: 4,
+                ease: "power1.inEase",
+                onComplete: () => {
+                    gsap.to($lyric_line, {
+                        scale: 1,
+                        rotateY: -15,
+                        backgroundColor: "transparent",
+                        duration: 4,
+                        ease: "power1.out",
+                    });
+                }
+            });
+
+            $lyric_word.innerText = word ? word.text: "";
+        } else {
+            $lyric_line.innerText = "";
+            $lyric_word.innerText = "";
+        }
+    });
+
+    liricle.load({
+        url: "untilifoundyou.lrc"
+    });
+
+    liricle.offset = 190;
+
+    $audio.addEventListener("timeupdate", () => {
+        const time = $audio.currentTime;
+        liricle.sync(time, false);
+    });
+
+    $audio.addEventListener("seeked", () => {
+        const time = $audio.currentTime;
+        liricle.sync(time, true);
+    });
+</script>
+<!-- #player {
+//       width: 100%;
+//       display: flex;
+//       align-items: center;
+// }
+
+// #player>a {
+//       border-radius: 8px;
+//       margin: 0 auto;
+//       text-align: center;
+//       background-color: rgb(12, 122, 109);
+//       padding: 8px;
+//       width: 6%;
+//       color: #1d2226;
+// }
+
+// #player>a:hover {
+//       background-color: rgb(10, 105, 59);
+//       transition: .5s background-color ease-in;
+// }
+// #player>a:focus{
+//       background-color: rgb(18, 86, 80);
+// }
+// #progress-bar {
+//       border-radius: 8px;
+//       width: 85%;
+//       background-color: #b0dea7;
+//       height: 9px;
+//       cursor: pointer;
+// }
+
+// #timer {
+//       width: 5%;
+//       text-align: right;
+// }
+
+// #progress-bar>#progress {
+//       border-radius: 8px;
+//       background-color: #1d2226;
+//       display: block;
+//       width: 0;
+//       height: 9px;
+// }
+// #progress-bar:hover{
+//       height: 12px;
+//       transition: .3s height ease-out;
+// }
+
+
+
+// $(function () {
+      //       const audio = $('audio')[0];
+
+      //       $('#player a').click(function (e) {
+      //             e.preventDefault();
+
+      //             $(this).find('i').toggleClass('fa-play-circle fa-pause-circle');
+
+      //             if (audio.paused) {
+      //                   audio.play();
+      //             } else {
+      //                   audio.pause();
+      //             }
+      //       });
+
+      //       audio.ontimeupdate = () => {
+      //             $('#progress').css('width', audio.currentTime / audio.duration * 100 + '%');
+      //             $('#timer').text(formatTime(audio.currentTime));
+      //       };
+
+      //       audio.onended = () => {
+      //             $(this).find('i').toggleClass('fa-play-circle fa-pause-circle');
+      //       };
+
+      //       $('#progress-bar').click(function (e) {
+      //             e.preventDefault();
+      //             audio.currentTime = e.offsetX / $(this).width() * audio.duration;
+      //       });
+
+      //       function formatTime(seconds) {
+      //             let minutes = Math.floor(seconds / 60);
+      //             seconds = Math.floor(seconds % 60);
+      //             seconds = (seconds >= 10) ? seconds : '0' + seconds;
+      //             return minutes + ':' + seconds;
+      //       }
+      // }); -->
+
+
+
+<!-- <div id="player">
+//                   <a href="javascript:void(0)">
+//                         <i class="far fa-play-circle fa-3x"></i>
+//                   </a>
+//                   <div id="progress-bar">
+//                         <span id="progress"></span>
+//                   </div>
+//                   <div id="timer">
+
+//                   </div>
+//             </div> -->
+
+</html>
