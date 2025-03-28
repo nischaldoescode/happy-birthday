@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playwrite+IS&display=swap" rel="stylesheet">
-  <link rel="shortcut icon" type="image/png" href="happy-birthday/img/favicon.png" />
+  <link rel="shortcut icon" type="image/png" href="img/favicon.png" />
 </head>
 <style>
   html {
@@ -791,5 +791,41 @@ setTimeout(() => {
   clearInterval(confettitime);
 },500);
 }
+
+function simpleHash(str) {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+        hash = (hash << 5) - hash + str.charCodeAt(i); // Basic string hash
+    }
+    return hash.toString(); // Return the string of the hash
+}
+
+const storedHash = simpleHash("Happy Birthday Kanchii"); // Hash of the correct password
+
+function checkPassword() {
+    const password = prompt("Please enter the password:");
+
+    // Handle the cancel case
+    if (password === null || password === "") {
+        document.body.style.display = "none"; 
+        alert("I have a surprise for you too wait..");
+        window.location.href = "https://youtu.be/H4BB9eGUEaE?si=GoYxnNe04Gj1xp9z&t=48"; 
+        return; // Exit the function early if canceled
+    }
+
+    const hashedInput = simpleHash(password); // Hash the input password
+
+    if (hashedInput === storedHash) {
+        document.body.style.display = "block";  // Reveal the content if password is correct
+    } else {
+        alert("Incorrect password! Please try again.");
+        window.location.href = "https://youtu.be/H4BB9eGUEaE?si=GoYxnNe04Gj1xp9z&t=48"; 
+    }
+}
+
+window.onload = function () {
+    checkPassword();
+};
+
 </script>
 </html>
